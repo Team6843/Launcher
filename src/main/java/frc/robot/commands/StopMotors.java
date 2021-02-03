@@ -13,7 +13,8 @@ import frc.robot.subsystems.LauncherSubsystem;
 public class StopMotors extends CommandBase {
   final LauncherSubsystem m_launcherSubsystem;
   /**
-   * Creates a new StopMotors.
+   * Stops the launch motors
+   * @author JSamson
    */
   public StopMotors(LauncherSubsystem launcherSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.

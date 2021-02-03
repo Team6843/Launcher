@@ -9,7 +9,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class LauncherSubsystem extends SubsystemBase {
   /**
-   * Creates a new DriveSubsystem.
+   * A subsystem containing everything for the launcher
+   * @author JSamson
    */
 
   private final WPI_TalonSRX topMotor = new WPI_TalonSRX(Constants.topMotor);

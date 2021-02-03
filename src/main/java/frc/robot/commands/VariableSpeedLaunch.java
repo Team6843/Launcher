@@ -16,7 +16,9 @@ public class VariableSpeedLaunch extends CommandBase {
   final LauncherSubsystem m_launcherSubsystem;
   final Supplier<Double> m_speedSupplier;
   /**
-   * Creates a new VariableSpeedLaunch.
+   * Spins the launcher motors at whatever speed is supplied to it
+   * @param speedSupplier Supplier<Double> of the speed
+   * @author JSamson
    */
   public VariableSpeedLaunch(LauncherSubsystem launcherSubsystem,
       Supplier<Double> speedSupplier) {

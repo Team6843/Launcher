@@ -14,7 +14,8 @@ public class SetSpeedLaunch extends CommandBase {
 
   final LauncherSubsystem m_launcherSubsystem;
   /**
-   * Creates a new setSpeedLaunch.
+   * Sets the launcher motors to a set speed
+   * @author JSamson
    */
   public SetSpeedLaunch(LauncherSubsystem launcherSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.

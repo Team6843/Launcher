@@ -52,8 +52,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(joystick, 2).whileHeld(new SetSpeedLaunch(m_launcherSubsystem));
-    new JoystickButton(joystick, 1).whileHeld(new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis()));
+    new JoystickButton(joystick, 2).whileHeld(new SetSpeedLaunch(m_launcherSubsystem)); // Sets the launch speed while the thumb button is held
+    new JoystickButton(joystick, 1).whileHeld(new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis())); // Uses the speed of the throttle while the trigger is held
   }
 
 
