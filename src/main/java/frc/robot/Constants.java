@@ -16,7 +16,17 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    //CAN Adresses Here
     public static int topMotor = 10; // Launcher top motor, TalonSRX
     public static int bottomMotor = 11; // Launcher bottom motor, TalonSRX
+
+    //Button Adresses Here
+    public static int T25B100Button = 12;
+    public static int T50B100Button = 11;
+    public static int T75B100Button = 10;
+    public static int T100B75Button = 9;
+    public static int T100B50Button = 8;
+    public static int T100B25Button = 7;
     
 }

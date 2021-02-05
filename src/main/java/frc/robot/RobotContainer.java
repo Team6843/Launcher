@@ -12,6 +12,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.SetSpeedLaunch;
 import frc.robot.commands.StopMotors;
+import frc.robot.commands.T100B25Launch;
+import frc.robot.commands.T100B50Launch;
+import frc.robot.commands.T100B75Launch;
+import frc.robot.commands.T25B100Launch;
+import frc.robot.commands.T50B100Launch;
+import frc.robot.commands.T75B100Launch;
 import frc.robot.commands.VariableSpeedLaunch;
 import frc.robot.subsystems.LauncherSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,6 +38,18 @@ public class RobotContainer {
   private final StopMotors m_stopMotors = new StopMotors(m_launcherSubsystem);
 
   private final VariableSpeedLaunch m_variableSpeedLaunch = new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis());
+
+  private final T25B100Launch m_t25b100Launch = new T25B100Launch(m_launcherSubsystem);
+
+  private final T50B100Launch m_t50b100Launch = new T50B100Launch(m_launcherSubsystem);
+
+  private final T75B100Launch m_t75b100Launch = new T75B100Launch(m_launcherSubsystem);
+
+  private final T100B75Launch m_t100b75Launch = new T100B75Launch(m_launcherSubsystem);
+
+  private final T100B50Launch m_t100b50Launch = new T100B50Launch(m_launcherSubsystem);
+
+  private final T100B25Launch m_t100b25Launch = new T100B25Launch(m_launcherSubsystem);
 
   private final Joystick joystick = new Joystick(0);
 
@@ -54,6 +72,13 @@ public class RobotContainer {
 
     new JoystickButton(joystick, 2).whileHeld(new SetSpeedLaunch(m_launcherSubsystem)); // Sets the launch speed while the thumb button is held
     new JoystickButton(joystick, 1).whileHeld(new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis())); // Uses the speed of the throttle while the trigger is held
+    new JoystickButton(joystick, Constants.T100B25Button).whileHeld(new T100B25Launch(m_launcherSubsystem));
+    new JoystickButton(joystick, Constants.T100B50Button).whileHeld(new T100B50Launch(m_launcherSubsystem));
+    new JoystickButton(joystick, Constants.T100B75Button).whileHeld(new T100B75Launch(m_launcherSubsystem));
+    new JoystickButton(joystick, Constants.T25B100Button).whileHeld(new T25B100Launch(m_launcherSubsystem));
+    new JoystickButton(joystick, Constants.T50B100Button).whileHeld(new T50B100Launch(m_launcherSubsystem));
+    new JoystickButton(joystick, Constants.T75B100Button).whileHeld(new T75B100Launch(m_launcherSubsystem));
+
   }
 
 
