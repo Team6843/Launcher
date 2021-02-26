@@ -38,7 +38,7 @@ public class LauncherSubsystem extends SubsystemBase {
    * Sets the speed of the motors to 90%
    */
   public void setSpeed() {
-    topMotor.set(ControlMode.PercentOutput, -0.90);
+    topMotor.set(ControlMode.PercentOutput, 0.90);
     bottomMotor.set(ControlMode.PercentOutput, -0.90);
   }
 /**
@@ -47,7 +47,7 @@ public class LauncherSubsystem extends SubsystemBase {
  */
   public void variableSpeed(double speed) {
     double posSpeed = Math.sqrt(Math.pow(speed, 2));
-    topMotor.set(ControlMode.PercentOutput, -posSpeed);
+    topMotor.set(ControlMode.PercentOutput, posSpeed);
     bottomMotor.set(ControlMode.PercentOutput, -posSpeed);
   }
 
@@ -57,7 +57,7 @@ public class LauncherSubsystem extends SubsystemBase {
    * @param bottomSpeed the speed for the bottom motor
    */
   public void setSeparateSpeeds(double topSpeed, double bottomSpeed){
-    topMotor.set(ControlMode.PercentOutput, -topSpeed);
+    topMotor.set(ControlMode.PercentOutput, topSpeed);
     bottomMotor.set(ControlMode.PercentOutput, -bottomSpeed);
   }
 
