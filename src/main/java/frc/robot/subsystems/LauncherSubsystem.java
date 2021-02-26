@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -10,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LauncherSubsystem extends SubsystemBase {
   /**
    * A subsystem containing everything for the launcher
+   * 
    * @author JSamson
    */
 
@@ -31,7 +33,18 @@ public class LauncherSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() { // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Bottom Motor Speed Percentage", 50);
+    SmartDashboard.putNumber("Top Motor Speed Percentage", 50);
+
     
+  }
+
+/**
+ * Sets the speed of the motors to the values inputted in the SmartDashboard
+ */
+  public void dashboardSpeed(){
+    topMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Top Motor Speed Percentage", 50)/100.0);
+    bottomMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Bottom Motor Speed Percentage", 50)/100.0);
   }
 
   /**
