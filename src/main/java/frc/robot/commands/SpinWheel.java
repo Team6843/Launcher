@@ -8,19 +8,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.LauncherSubsystem;
+import frc.robot.subsystems.LoaderSubsystem;
 
 public class SpinWheel extends CommandBase {
 
-  final LauncherSubsystem m_launcherSubsystem;
+  final LoaderSubsystem m_loaderSubsystem;
   /**
    * Spins the Motor thatspins the loading wheel
    * @author JSamson
    */
-  public SpinWheel(LauncherSubsystem launcherSubsystem) {
+  public SpinWheel(LoaderSubsystem loaderSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_launcherSubsystem = launcherSubsystem;
-    addRequirements(launcherSubsystem);
+    m_loaderSubsystem = loaderSubsystem;
+    addRequirements(loaderSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -31,13 +31,13 @@ public class SpinWheel extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_launcherSubsystem.spinWheel();
+    m_loaderSubsystem.spinWheel();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_launcherSubsystem.stopMotors();
+    m_loaderSubsystem.stopMotors();
   }
 
   // Returns true when the command should end.

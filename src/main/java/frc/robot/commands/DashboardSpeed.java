@@ -33,6 +33,7 @@ public class DashboardSpeed extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_launcherSubsystem.stopMotors();
+
   }
 
   // Returns true when the command should end.

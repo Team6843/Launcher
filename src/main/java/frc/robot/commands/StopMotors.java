@@ -9,17 +9,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LauncherSubsystem;
+import frc.robot.subsystems.LoaderSubsystem;
 
 public class StopMotors extends CommandBase {
   final LauncherSubsystem m_launcherSubsystem;
+  final LoaderSubsystem m_loaderSubsystem;
   /**
-   * Stops the launch motors
+   * Stops all the motors
    * @author JSamson
    */
-  public StopMotors(LauncherSubsystem launcherSubsystem) {
+  public StopMotors(LauncherSubsystem launcherSubsystem, LoaderSubsystem loaderSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_launcherSubsystem = launcherSubsystem;
+    m_loaderSubsystem = loaderSubsystem;
     addRequirements(launcherSubsystem);
+    addRequirements(loaderSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -31,6 +35,7 @@ public class StopMotors extends CommandBase {
   @Override
   public void execute() {
     m_launcherSubsystem.stopMotors();
+    m_loaderSubsystem.stopMotors();
   }
 
   // Called once the command ends or is interrupted.

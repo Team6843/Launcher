@@ -22,6 +22,7 @@ import frc.robot.commands.T50B100Launch;
 import frc.robot.commands.T75B100Launch;
 import frc.robot.commands.VariableSpeedLaunch;
 import frc.robot.subsystems.LauncherSubsystem;
+import frc.robot.subsystems.LoaderSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -35,9 +36,11 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final LauncherSubsystem m_launcherSubsystem = new LauncherSubsystem();
 
+  private final LoaderSubsystem m_loaderSubsystem = new LoaderSubsystem();
+
   private final SetSpeedLaunch m_setSpeedLaunch = new SetSpeedLaunch(m_launcherSubsystem);
 
-  private final StopMotors m_stopMotors = new StopMotors(m_launcherSubsystem);
+  private final StopMotors m_stopMotors = new StopMotors(m_launcherSubsystem, m_loaderSubsystem);
 
   private final VariableSpeedLaunch m_variableSpeedLaunch = new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis());
 
@@ -76,7 +79,7 @@ public class RobotContainer {
 
     new JoystickButton(joystick, 1).whileHeld(new DashboardSpeed(m_launcherSubsystem)); // Uses the speed of the throttle while the trigger is held
     new JoystickButton(joystick, 2).whileHeld(new SetSpeedLaunch(m_launcherSubsystem)); // Sets the launch speed while the thumb button is held
-    new JoystickButton(joystick, 6).whileHeld(new SpinWheel(m_launcherSubsystem));
+    new JoystickButton(joystick, 6).whileHeld(new SpinWheel(m_loaderSubsystem));
     new JoystickButton(joystick, Constants.T100B25Button).whileHeld(new T100B25Launch(m_launcherSubsystem));
     new JoystickButton(joystick, Constants.T100B50Button).whileHeld(new T100B50Launch(m_launcherSubsystem));
     new JoystickButton(joystick, Constants.T100B75Button).whileHeld(new T100B75Launch(m_launcherSubsystem));
