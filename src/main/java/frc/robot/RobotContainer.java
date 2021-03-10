@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DashboardSpeed;
 import frc.robot.commands.SetSpeedLaunch;
+import frc.robot.commands.SpinWheel;
 import frc.robot.commands.StopMotors;
 import frc.robot.commands.T100B25Launch;
 import frc.robot.commands.T100B50Launch;
@@ -73,8 +74,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(joystick, 2).whileHeld(new VariableSpeedLaunch(m_launcherSubsystem, ()-> getSliderAxis())); // Uses the speed of the throttle while the trigger is held
     new JoystickButton(joystick, 1).whileHeld(new DashboardSpeed(m_launcherSubsystem)); // Uses the speed of the throttle while the trigger is held
+    new JoystickButton(joystick, 2).whileHeld(new SetSpeedLaunch(m_launcherSubsystem)); // Sets the launch speed while the thumb button is held
+    new JoystickButton(joystick, 6).whileHeld(new SpinWheel(m_launcherSubsystem));
     new JoystickButton(joystick, Constants.T100B25Button).whileHeld(new T100B25Launch(m_launcherSubsystem));
     new JoystickButton(joystick, Constants.T100B50Button).whileHeld(new T100B50Launch(m_launcherSubsystem));
     new JoystickButton(joystick, Constants.T100B75Button).whileHeld(new T100B75Launch(m_launcherSubsystem));

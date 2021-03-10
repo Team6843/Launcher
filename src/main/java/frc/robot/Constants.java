@@ -20,7 +20,8 @@ public final class Constants {
     //CAN Adresses Here
     public static int topMotor = 10; // Launcher top motor, TalonSRX
     public static int bottomMotor = 11; // Launcher bottom motor, TalonSRX
-
+    //PWM Addresses here
+    public static int wheelMotor = 0;
     //Button Adresses Here
     public static int T25B100Button = 12;
     public static int T50B100Button = 11;

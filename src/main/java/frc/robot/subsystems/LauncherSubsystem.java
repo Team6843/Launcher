@@ -8,6 +8,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.PWMTalonSRX;
+
 public class LauncherSubsystem extends SubsystemBase {
   /**
    * A subsystem containing everything for the launcher
@@ -17,7 +19,8 @@ public class LauncherSubsystem extends SubsystemBase {
 
   private final WPI_TalonSRX topMotor = new WPI_TalonSRX(Constants.topMotor);
   private final WPI_TalonSRX bottomMotor = new WPI_TalonSRX(Constants.bottomMotor);
-
+  
+  private final PWMTalonSRX wheelMotor = new PWMTalonSRX(Constants.wheelMotor);
 
   public LauncherSubsystem() {
 
@@ -47,8 +50,14 @@ public class LauncherSubsystem extends SubsystemBase {
     bottomMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Bottom Motor Speed Percentage", 50)/100.0);
   }
 
+  
+  public void spinWheel(){
+    wheelMotor.set(0.5);
+  }
+
   /**
    * Sets the speed of the motors to 90%
+   * 
    */
   public void setSpeed() {
     topMotor.set(ControlMode.PercentOutput, 0.90);
@@ -82,6 +91,7 @@ public class LauncherSubsystem extends SubsystemBase {
     bottomMotor.set(ControlMode.PercentOutput, 0.0);
     topMotor.stopMotor();
     bottomMotor.stopMotor();
+    wheelMotor.stopMotor();
   }
 
 
