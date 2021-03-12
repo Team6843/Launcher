@@ -17,6 +17,8 @@ public class LauncherSubsystem extends SubsystemBase {
 
   private final WPI_TalonSRX topMotor = new WPI_TalonSRX(Constants.topMotor);
   private final WPI_TalonSRX bottomMotor = new WPI_TalonSRX(Constants.bottomMotor);
+  private double topSpeed = 0.0;
+  private double bottomSpeed = 0.0;
   
   
 
@@ -30,13 +32,14 @@ public class LauncherSubsystem extends SubsystemBase {
     bottomMotor.configOpenloopRamp(0);
     topMotor.setNeutralMode(NeutralMode.Coast);
     bottomMotor.setNeutralMode(NeutralMode.Coast);
+    SmartDashboard.putNumber("Bottom Motor Speed Percentage", 50);
+    SmartDashboard.putNumber("Top Motor Speed Percentage", 50);
   }
 
   @Override
   public void periodic() { // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Bottom Motor Speed Percentage", 50);
-    SmartDashboard.putNumber("Top Motor Speed Percentage", 50);
-
+    topSpeed = SmartDashboard.getNumber("Top Motor Speed Percentage", 50);
+    bottomSpeed = SmartDashboard.getNumber("Bottom Motor Speed Percentage", 50);
     
   }
 
@@ -44,8 +47,8 @@ public class LauncherSubsystem extends SubsystemBase {
  * Sets the speed of the motors to the values inputted in the SmartDashboard
  */
   public void dashboardSpeed(){
-    topMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Top Motor Speed Percentage", 50)/100.0);
-    bottomMotor.set(ControlMode.PercentOutput, SmartDashboard.getNumber("Bottom Motor Speed Percentage", 50)/100.0);
+    topMotor.set(ControlMode.PercentOutput, topSpeed/100.0);
+    bottomMotor.set(ControlMode.PercentOutput, -bottomSpeed/100.0);
   }
 
   /**

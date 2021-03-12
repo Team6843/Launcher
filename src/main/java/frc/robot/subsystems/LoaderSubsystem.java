@@ -26,6 +26,10 @@ public class LoaderSubsystem extends SubsystemBase {
     wheelMotor.set(0.5);
   }
 
+  public void reverseWheel(){
+    wheelMotor.set(-0.5);
+  }
+
   public void stopMotors(){
     wheelMotor.stopMotor();
   }
